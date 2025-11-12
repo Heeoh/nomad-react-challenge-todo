@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { categoriesState, selectedCategoryState } from "../states/categoryAtom";
 import { useRecoilState } from "recoil";
-import { useState } from "react";
 
 const Tabs = styled.div`
 	display: flex;
