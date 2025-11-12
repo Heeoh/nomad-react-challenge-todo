@@ -72,6 +72,7 @@ const Dropdown = styled.ul`
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 4px;
+	z-index: 1;
 	
 	animation: ${dropdownAnimation} 0.2s ease-out;
 `;
