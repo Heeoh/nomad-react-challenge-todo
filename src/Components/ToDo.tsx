@@ -66,12 +66,12 @@ const Dropdown = styled.ul`
   margin-top: 4px;
   background: ${({theme}) => theme.bgColors.dimmed};
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px 12px;
 
   display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	gap: 4px;
+	gap: 5px;
 	z-index: 1;
 	
 	animation: ${dropdownAnimation} 0.2s ease-out;

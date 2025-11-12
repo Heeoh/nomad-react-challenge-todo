@@ -33,7 +33,7 @@ export const darkTheme: DefaultTheme = {
 	bgColors: {
 		normal: "#212121",
 		reversed: "#f5f5f5",
-		dimmed: "#111111a0",
+		dimmed: "#111111",
 	},
 	textColors: {
 		normal: "#f5f5f5",
