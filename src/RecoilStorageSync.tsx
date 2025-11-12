@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import { categoriesState } from "./atoms/categoryAtom";
-import { todoListState } from "./atoms/todoAtom";
+import { categoriesState } from "./states/categoryAtom";
+import { todoListState } from "./states/todoAtom";
 import { useEffect } from "react";
 
 function RecoilStorageSync() {

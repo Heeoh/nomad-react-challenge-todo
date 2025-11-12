@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import IToDo from "../interfaces/IToDo";
-import { categoriesState } from "../atoms/categoryAtom";
-import { todoListState } from "../atoms/todoAtom";
+import { categoriesState } from "../states/categoryAtom";
+import { todoListState } from "../states/todoAtom";
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 

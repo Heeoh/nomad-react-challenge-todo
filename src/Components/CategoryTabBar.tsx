@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { categoriesState, selectedCategoryState } from "../atoms/categoryAtom";
+import { categoriesState, selectedCategoryState } from "../states/categoryAtom";
 import { useRecoilState } from "recoil";
+import { useState } from "react";
 
 const Tabs = styled.div`
 	display: flex;
@@ -27,24 +28,37 @@ const Tab = styled.button<{$isActive : boolean}>`
 function CategoryTabBar() {
 	const [categories, setCategories] = useRecoilState(categoriesState);
 	const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
+
 	const selectCategory = (cur: string) => {
 		setSelectedCategory((prev) => prev === cur ? null : cur)
 	};
+
 	const addNewCategory = () => {
 		console.log("add new category")
 		const newCategoryName = prompt("카테고리 이름을 입려해주세요.") ?? "";
-		if (validateCategory(newCategoryName)) {
-			setCategories((prev) => [...prev, newCategoryName])
+		const error = validateCategory(newCategoryName)
+		if (error) {
+			alert(error);
+			return;
 		}
+		setCategories((prev) => [...prev, newCategoryName])
 	};
 
 	const validateCategory = (newCategory: string | null) => {
-		if (!newCategory) return false;
+		if (!newCategory) {
+			return "카테고리 이름을 입력해주세요.";
+		}
 		
 		const trimmed = newCategory.trim();
-		if (trimmed.length < 1 || trimmed.length > 10) return false;
+		if (trimmed.length < 1 || trimmed.length > 10) {
+			return "카테고리 이름은 1자 이상 10자 이하여야 합니다.";
+		}
 
-  	return !(categories.some( (c) => c === trimmed ));
+		if (categories.some( (c) => c === trimmed )) {
+			return "이미 존재하는 카테고리입니다.";
+		}
+  	
+		return null;
 	}
 
 	return (

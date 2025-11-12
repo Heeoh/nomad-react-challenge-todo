@@ -1,6 +1,6 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { categoriesState, selectedCategoryState } from "../atoms/categoryAtom";
-import { todoListState } from "../atoms/todoAtom";
+import { categoriesState, selectedCategoryState } from "../states/categoryAtom";
+import { todoListState } from "../states/todoAtom";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -49,7 +49,7 @@ function CreateToDo() {
 	const category = useRecoilValue(selectedCategoryState);
 	const categories = useRecoilValue(categoriesState);
 
-	const { register, handleSubmit, setValue } = useForm<IForm>();
+	const { register, handleSubmit, formState: {errors}, setValue } = useForm<IForm>();
 	const handleValid = ({ toDo }: IForm) => {
     setToDoList((oldToDos) => [
       { id: Date.now(), text: toDo, category: category ?? categories[0]},
@@ -57,6 +57,9 @@ function CreateToDo() {
     ]);
     setValue("toDo", "");
   };
+	// const handleInvalid = () => {
+	// 	alert(errors.toDo?.message);
+	// }
 
 	return (
 		<Form 
@@ -64,7 +67,7 @@ function CreateToDo() {
 		>
 			<Input {...register(
 					"toDo",
-					{ required: "Please write a to do." },
+					{ required: "할 일을 입력해주세요." },
 				)}
 				placeholder={category ? `[ ${category} ] 에 추가할 할 일을 입력하세요.` : `할 일을 입력하세요.`}
 			></Input>

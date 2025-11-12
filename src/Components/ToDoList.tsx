@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { todoSelector } from "../atoms/todoAtom";
+import { todoSelector } from "../states/todoAtom";
 import CreateToDo from "./CreateToDo";
 import ToDo from "./ToDo";
 import styled from "styled-components";

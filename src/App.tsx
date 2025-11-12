@@ -3,7 +3,7 @@ import ToDoList from './Components/ToDoList';
 import RecoilStorageSync from './RecoilStorageSync';
 import styled, { ThemeProvider } from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { isDarkState } from './atoms/themeAtom';
+import { isDarkState } from './states/themeAtom';
 import { darkTheme, lightTheme } from './styles/theme';
 
 const ThemeToggleButton = styled.span`
